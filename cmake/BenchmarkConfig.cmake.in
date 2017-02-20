@@ -1,0 +1,25 @@
+# =============================================================================
+# Google Benchmark CMake configuration file
+# 
+# Usage:
+#   find_package(benchmark REQUIRED)
+#   target_include_directories(MyTarget PRIVATE ${benchmark_INCLUDE_DIR})
+#   target_link_libraries(MyTarget ${benchmark_LIBRARIES})
+# 
+# This file defines the following variables:
+#   benchmark_INCLUDE_DIR - Google benchmark include directory.
+#   benchmark_LIBRARIES   - Imported target.
+#   benchmark_VERSION     - Version of the library.
+# =============================================================================
+
+@PACKAGE_INIT@
+
+set(benchmark_VERSION @GENERIC_LIB_VERSION@)
+
+include(@PACKAGE_TARGETS_FILE@)
+
+set_and_check(benchmark_INCLUDE_DIR "@PACKAGE_INCLUDE_DIR@")
+
+set(benchmark_LIBRARIES benchmark)
+
+check_required_components(benchmark)
